@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books</title>
+    <script src="li.js"></script>
+    <link rel="stylesheet" href="brr.css">
+</head>
+<body>
+    <header>
+        <h1>Borrowed Books</h1>
+    </header>
+
+    <main>
+        <section id="borrowedBooks">
+            <!-- This section will display the borrowed books -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Our Book Store</p>
+    </footer>
+
+    <script>
+        // Function to handle borrowing a book
+        function borrowBook() {
+            // Get book details
+            const title = document.getElementById('btitel').innerText;
+            const image = document.getElementById('bim').src;
+            const description = document.getElementById('bdisc').innerText;
+
+            // Create book object
+            const book = { title, image, description };
+
+            // Retrieve borrowed books from local storage
+            let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+
+            // Add the book to borrowed books
+            borrowedBooks.push(book);
+
+            // Save borrowed books to local storage
+            localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
+
+            // Refresh borrowed books display
+            const borrowedBooksSection = document.getElementById('borrowedBooks');
+            borrowedBooksSection.innerHTML = '';
+            borrowedBooks.forEach(book => {
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('borrowed-book');
+                bookElement.innerHTML = `
+                    <h2>${book.title}</h2>
+                    <img src="${book.image}" alt="${book.title}" width="150">
+                    <p>${book.description}</p>
+                `;
+                borrowedBooksSection.appendChild(bookElement);
+            });
+        }
+
+        // Add event listener to the "borrow" button
+        document.getElementById('borrowBtn').addEventListener('click', borrowBook);
+    </script>
+</body>
+</html>

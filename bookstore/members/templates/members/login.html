@@ -1,0 +1,59 @@
+<html>
+    <head>
+        {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'li.css' %}">
+    
+    <link rel="stylesheet" href="li.css">
+    <meta name="discription" content="this is my book store"\>
+<body>
+  <a href="home.html"> <h1 > Our Book Store</h1></a> 
+    <h3 ><p class="firsthead"><b>Welcame to our book store online</b> </p></h3><br>
+
+
+    <ul id="navbar"> 
+        <li> <a href="/members/home/">HOME</a></li>
+        <li> <a href="new_book.html">new book</a></li>
+        <li> <a href="/members/signup/">sign up</a></li>
+        <li> <a href="/members/login/">login</a></li>
+        <li><div >
+             <input class="search_box" type="text" placeholder="search.." style="width: 400px;">
+            </div></li>
+        <li> <a href="/members/shoping_basket/"> shopping basket</a></li>
+        <li> <a href="/members/edit/">edit log in information</a></li>
+        <li> <a href="/members/addnew/">insert new book</a></li>
+        <li> <a href="cont.html">contact us</a></li>
+        </ul>
+
+</div>
+<div id="inside3">
+    <div class="insins">
+        <h2>log in</h2>
+        <form id="loginForm" onsubmit="return validateForm()">
+            <div>
+                <label>User Name</label>
+                <input type="text" id="username" required>
+            </div>
+            <br>
+            <div>
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <input type="submit">
+            <a href="trining3.html">I DON'T HAVE AN ACCOUNT</a>
+        </form>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+        // Retrieve username
+        var username = document.getElementById('username').value;
+
+        // Store username in local storage
+        localStorage.setItem('username', username);
+        return true; // Proceed with form submission
+    }
+</script>
+</body>
+</head>
+</html>

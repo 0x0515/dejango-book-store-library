@@ -1,0 +1,96 @@
+<html>
+    <link rel="stylesheet" href="li.css">
+    <script src="signup.js"></script>
+    <meta name="discription" content="this is my book store"\>
+    {% load static %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'li.css' %}">
+
+  <a href="home.html"> <h1 > Our Book Store</h1></a> 
+    <h3 ><p class="firsthead"><b>Welcame to our book store online</b> </p></h3><br>
+
+
+    <ul id="navbar"> 
+        <li> <a href="/members/home/">HOME</a></li>
+        <li> <a href="new_book.html">new book</a></li>
+        <li> <a href="/members/signup/">sign up</a></li>
+        <li> <a href="/members/login/">login</a></li>
+        <li><div >
+             <input class="search_box" type="text" placeholder="search.." style="width: 400px;">
+            </div></li>
+        <li> <a href="/members/shoping_basket/"> shopping basket</a></li>
+        <li> <a href="/members/edit/">edit log in information</a></li>
+        <li> <a href="/members/addnew/">insert new book</a></li>
+        <li> <a href="cont.html">contact us</a></li>
+        </ul>
+<body>
+</div >
+        
+<div id="inside3">
+    <div class="insins">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div>
+                <label>User name</label>
+                <input type="text" id="username" required>
+            </div>
+            <br><br>
+            <div>
+                <label>Email</label>
+                <input type="email" id="email" required placeholder="user@mail.com">
+            </div>
+            <br><br>
+            <div>
+                <label>Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <div>
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <hr>
+            <input id="isAdmin" type="checkbox">
+            <label for="isAdmin">Admin</label>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <script>document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+    
+           
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var isAdmin = document.getElementById("isAdmin").checked;
+    
+          
+            var user = {
+                username: username,
+                email: email,
+                isAdmin: isAdmin
+            };
+    
+            
+            localStorage.setItem("user", JSON.stringify(user));
+    
+            
+            alert("User signed up successfully!");
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var userData = localStorage.getItem('userData');
+            if (userData) {
+                userData = JSON.parse(userData);
+                if (userData.isAdmin==true) {
+                document.getElementById('insertBookLink').style.display = 'block';
+            } else {
+                document.getElementById('insertBookLink').style.display = 'none';
+            }
+        
+            }
+        });</script>
+    </div>
+</div>
+
+    </body>
+</html>

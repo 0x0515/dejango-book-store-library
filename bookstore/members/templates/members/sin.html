@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %} 
+        <link rel="stylesheet" type="text/css" href="{% static 'li.css' %}">
+    <link rel="stylesheet" href="li.css">
+    <meta name="description" content="this is my book store">
+</head>
+
+<body id="home_body" style="background:url(cover.jpg);">
+
+    <a href="home.html">
+        <h1 id="h1hom"><strong> Our Book Store</strong></h1>
+    </a>
+    <div class="sinimage">
+      <h1 id="btitel">Book Title</h1>
+      <h4 id="bdisc">Book Description</h4>
+      <h3 class="arther by">"by" <a href="#" id="authorLink">Unknown Author</a></h3>
+
+      <img id="bim" src="" style="height: 500px; width: 500px;">
+  </div>
+
+  <section>
+      <p></p>
+      <div>
+          <span> <h4 id="bpr">Price</h4> 
+          </span>
+      </div>
+      <details>
+          <summary>Book Details</summary>
+          <ul id="book_details">
+              <li class="det" value="Pages"><h5>Pages</h5></li>
+              <li class="det" value="Publisher"><h5>Publisher</h5></li>
+              <li class="det" value="Language"><h5>Language</h5></li>
+              <li class="det" value="Publish Date"><h5>Publish Date</h5></li>
+          </ul>
+      </details>
+      <h4> <a href="#">Add to Wish List</a></h4>
+      <a href="shopingcard.html"><button  class="singlbut">Buy Now</button></a>
+      <a href="borrowedbook.html"><button id="borrowBtn" class="singlbut">Borrow Now</button></a>
+  </section>
+
+  <script>
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const bookId = params.get('id');
+        const books = JSON.parse(localStorage.getItem('books')) || [];
+
+        const book = books.find(book => book.id === bookId);
+
+        if (book) {              
+            document.getElementById('btitel').innerText = book.bookName;
+            document.getElementById('bim').src = book.imageUrl;
+            document.getElementById('bdisc').innerText = book.description;
+            document.getElementById('bpr').innerText = book.price + '$';
+            //document.getElementById('authorLink').innerText = book.author;
+            //document.getElementById('authorLink').href = book.authorLink || '#';
+
+            // Populate book details
+          /*  const bookDetails = document.getElementById('book_details');
+            bookDetails.innerHTML = ''; // Clear previous details
+
+            const detailsMap = {
+                "Pages": book.pages,
+                "Publisher": book.publisher,
+                "Language": book.language,
+                "Publish Date": book.publishDate
+            };
+
+            for (const [key, value] of Object.entries(detailsMap)) {
+                const listItem = document.createElement('li');
+                listItem.className = 'det';
+                listItem.innerHTML = `<h5>${key}</h5>${value}`;
+                bookDetails.appendChild(listItem);*/
+            }
+         else {
+            alert("Book not found!");
+        }
+    };
+</script>
+
+</body>
+</html>
