@@ -1,5 +1,4 @@
-# dejango-book-store-library
-A Django-based Book Store app where users can register, log in, browse, purchase, and read books online. Includes an admin panel to manage books, users, and orders. Users can read purchased books directly in the browser using an embedded PDF reader
+
 # 📚 Django Book Store
 
 A full-featured online **Book Store** web application built with **Django**. This project allows users to register, log in, buy books, and read them online, with an intuitive admin panel for managing books, users, and orders.
